@@ -1,0 +1,101 @@
+
+.headerCart {
+   
+    margin:  auto;
+ 
+}
+
+.headerCart h4 {
+
+margin: 50px auto;
+width: 400px;
+text-align: center;
+font-size: 1.8rem;
+
+}
+.table {
+margin: 0 auto;
+}
+
+.cart .header {
+
+    background-color:#646cff;
+    color: white;
+    font-size: 1.3rem;
+
+  
+}
+th, td{
+
+
+    padding: 5px 10px;
+    
+}
+
+.col {
+
+    padding: 0 50px;
+}
+
+.row th{
+padding-right: 50px;
+text-align: start;
+
+}
+.price, .quantity, .subtotal {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.table .title {
+
+    text-align: start;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 400px;
+
+}
+.title div img {
+
+}
+.title img {
+ 
+    height: 80px;
+    width: 80px;
+    object-fit: contain;
+}
+.table h5 {
+
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+}
+
+.lastRow th {
+
+    font-size: 1.3rem;
+    padding-left: 15px;
+}
+.total {
+    font-size: 1rem;
+    text-align: center;
+ 
+}
+
+
+.emptyRow {
+    height: 20px;
+}
+
+.lastRow th {
+    
+    text-align: start;
+}
+
+table .button {
+
+display: flex;
+justify-content: center;
+align-items: center;
+}

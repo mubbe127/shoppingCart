@@ -5,7 +5,7 @@ import { useOutletContext } from "react-router-dom"; // Import the hook
 import "./Shop.css";
 
 function Shop() {
-  const { addItem } = useOutletContext();
+  const { addItem} = useOutletContext();
   const [data, setData] = useState(null);
 
   useEffect(() => {

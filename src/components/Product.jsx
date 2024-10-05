@@ -6,7 +6,7 @@ export {Product}
 
 function Product({item, addItem}){
 
-  const [value, setValue]= useState("")
+  const [value, setValue]= useState(1)
 
   function onChange(event) {
     setValue(event.target.value)
@@ -20,7 +20,7 @@ function Product({item, addItem}){
             <p>${item.price} </p>
             <input type="number" value={value} onChange={(event)=>onChange(event)}/>
             <button onClick={()=>addItem(item, value)}>Add to cart</button>
-            <div><p>{value}</p></div>
+            
         </div>
     )
 }

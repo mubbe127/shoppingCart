@@ -1,26 +1,37 @@
-import { useState } from 'react'
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Outlet } from 'react-router-dom';
-import './NavBar.css'
+import { Outlet } from "react-router-dom";
+import cartIcon from "../assets/cart.svg"
+import "./NavBar.css";
 
-function NavBar() {
+function NavBar({items}) {
 
 
+  let totalQuantity = Math.floor(
+    items.reduce((prev, item) => prev + item.quantity, 0)
+  );
 
   return (
     <>
-    <nav>
-    <ul>
-        <li><Link to="home">Home</Link></li>
-        <li><Link to="shop">Shop</Link></li>
-        <li><Link className='shoppingCart nav' to="cart">Shopping Cart</Link></li>
-    </ul>
-    </nav>
-   
+      <nav>
+        <ul>
+          <div className="homeShop">
+          <li>
+            <Link to="home">Home</Link>
+          </li>
+          <li>
+            <Link to="shop">Shop</Link>
+          </li>
+          </div>
+          <li>
+            <Link className="shoppingCart nav" to="cart">
+              <div className="iconCart"><img src={cartIcon} alt=""/><p>{totalQuantity}</p></div>
+            </Link>
+          </li>
+        </ul>
+      </nav>
     </>
-  )
+  );
 }
 
-export {NavBar}
-
-
+export { NavBar };
