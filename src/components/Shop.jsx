@@ -7,6 +7,7 @@ import "./Shop.css";
 function Shop() {
   const { addItem} = useOutletContext();
   const [data, setData] = useState(null);
+  const [itemAdded, setItemAdded]= useState(false)
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products/")
@@ -19,13 +20,14 @@ function Shop() {
 
   return (
     <>
-      <p>Välkommen till affären!</p>
+      
       <div className="productList">
         {data &&
           data.map((item) => (
-            <Product addItem={addItem} item={item} key={item.id} />
+            <Product addItem={addItem} item={item} key={item.id} setItemAdded={setItemAdded}/>
           ))}
       </div>
+      {itemAdded && <div className="itemAdded"><p>{itemAdded} items added</p></div>}
     </>
   );
 }

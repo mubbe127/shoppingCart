@@ -1,12 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import "./ShopCart.css";
 
 export { ShopCart };
 
 function ShopCart() {
-  const { items, deleteItem, clearItems } = useOutletContext();
-  console.log(items);
+  const { items, deleteItem, clearItems, addItem, changeQuantity } =
+    useOutletContext();
 
   let totalAmount = Math.floor(
     items.reduce((prev, item) => prev + item.quantity * item.price, 0)
@@ -42,7 +42,7 @@ function ShopCart() {
           </thead>
           <tbody>
             {items.map((item) => (
-              <tr className="row">
+              <tr key={item.id} className="row">
                 <th className="title">
                   <div>
                     <img src={item.image} alt="" />
@@ -50,16 +50,24 @@ function ShopCart() {
                   <h5>{item.title}</h5>
                 </th>
                 <td className="price">${item.price}</td>
-                <td className="quantity">{item.quantity}</td>
+                <td className="quantity">
+                  <input
+                    type="number"
+                    value={item.quantity !== 0 && item.quantity}
+                    onChange={(e) => changeQuantity(item, e.target.value)}
+                  />
+                  {}
+                </td>
                 <td className="subtotal">${item.quantity * item.price}</td>
-                <td >
-                  <div className="button"><button
-                    onClick={() => {
-                      deleteItem(item);
-                    }}
-                  >
-                    Remove
-                  </button>
+                <td>
+                  <div className="button">
+                    <button
+                      onClick={() => {
+                        deleteItem(item);
+                      }}
+                    >
+                      Remove
+                    </button>
                   </div>
                 </td>
               </tr>
@@ -69,16 +77,23 @@ function ShopCart() {
             </tr>
             <tr className="lastRow">
               {" "}
-              <th scope="row">Total</th>
-              <td></td>
-              <td></td>
-              <td className="total">${totalAmount}</td>
-              <td>
-                <div className="button"><button onClick={clearItems}>Clear cart</button></div>
-              </td>
+              {items.length > 0 &&
+                <>
+                  <th scope="row">Total</th>
+                  <td></td>
+                  <td></td>
+                  <td className="total">${totalAmount}</td>
+                  <td>
+                    <div className="button">
+                      <button onClick={clearItems}>Clear cart</button>
+                    </div>
+                  </td>
+                </>
+              }
             </tr>
           </tbody>
         </table>
+        {items.length===0 && <div className="emptyBag"><p>Your shopping bag is empty</p></div>}
       </div>
     </>
   );
